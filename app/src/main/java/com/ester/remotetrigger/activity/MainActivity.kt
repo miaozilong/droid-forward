@@ -59,7 +59,11 @@ class MainActivity : AppCompatActivity() {
 
                 btStop.text = "启动服务"
             } else {
-                startForegroundService(startServiceIntent)
+                // 18   26
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                    startForegroundService(startServiceIntent)
+//                }
+                startService(Intent(this, ForwardSMSService::class.java))
                 trigger_text.text = "事件监听中……"
 
                 btStop.text = "停止服务"
@@ -89,7 +93,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         if (needPermissions) {
-            requestPermissions(permissions, REQUEST_CODE)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                requestPermissions(permissions, REQUEST_CODE)
+            }
         }
     }
 

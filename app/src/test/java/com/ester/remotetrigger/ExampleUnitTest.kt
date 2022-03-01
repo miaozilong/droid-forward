@@ -1,5 +1,6 @@
 package com.ester.remotetrigger
 
+import com.ester.remotetrigger.service.ForwardService
 import org.junit.Test
 
 import org.junit.Assert.*
